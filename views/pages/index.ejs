@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include ('../components/head') %>
+</head>
+
+<body>
+    <header>
+        <%- include ('../components/header') %>
+    </header>
+    <main>
+        <div id="content" class="jumbotron">
+            <h1>User List</h1>
+            <ul>
+                <% users.forEach(function(user){ %>
+                <li><a href="/profile/<%= user.id %>"><%= user.name %></a></li>
+                <% }); %>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <%- include ('../components/footer') %>
+    </footer>
+</body>
+
+</html>
