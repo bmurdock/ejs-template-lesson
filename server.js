@@ -29,7 +29,8 @@ app.get('/', (req, res, next) => {
     res.render('pages/index', {
         color: 'red',
         title: 'Welcome',
-        users
+        users,
+        element: '<div>Some text</div>',
     });
 });
 
