@@ -51,6 +51,13 @@ const profileLookup = (_id) => {
     });
 };
 
+app.get('/search/:name', (req, res, next) => {
+    res.json(users.filter((user) => {
+        // return true if the search name matches even PART
+        // of the user name
+        return user.name.indexOf(req.params.name) !== -1;
+    }))
+});
 app.get('/profile/:id', (req, res, next) => {
     const id = parseInt(req.params.id);
     let user = profileLookup(id);

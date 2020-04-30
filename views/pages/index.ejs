@@ -18,13 +18,32 @@
                 <% }); %>
             </ul>
         </div>
-        <%= element %>
-        <br />
-        <%- element %>
+        <form id="myForm">
+            <label>Search:</label><input id="search" type="text" />
+            <input type="submit" value="Search" />
+        </form>
+
     </main>
     <footer>
         <%- include ('../components/footer') %>
     </footer>
+    <script>
+        const myForm = document.getElementById('myForm');
+        const searchField = document.getElementById('search');
+        myForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            fetch(`/search/${searchField.value}`)
+                .then((result) => {
+                    return result.json();
+                })
+                .then((data) => {
+                    console.log('data: ', data);
+                })
+                .catch((err) => {
+                    console.log('error when fetching: ', err);
+                });
+        })
+    </script>
 </body>
 
 </html>
